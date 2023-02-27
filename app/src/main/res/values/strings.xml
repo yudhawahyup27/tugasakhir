@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">tugasakhir</string>
+    <string name="Hello">Hello</string>
+    <string name="started_subtitle">
+        Selamat Datang Di Aplikasi Absensi Online Karyawan
+        <br>Pilih Absensi Sesuai Jabatan</br>
+        <br>Jika Kalian Pemilik Perusahaan, Kalian Bisa <b>Register</b> Terlebih Dahulu</br>
+    </string>
+    <string name="admin">admin</string>
+    <string name="btnkaryawn">karyawan</string>
+    <string name="titlelogin">Login</string>
+    <string name="m_user">Masukan Username Anda</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="title_activity_listdata_admin">listdataAdmin</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

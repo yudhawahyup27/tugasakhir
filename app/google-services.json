@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "30355090591",
+    "project_id": "tugasakhir-9916b",
+    "storage_bucket": "tugasakhir-9916b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30355090591:android:fb06e2efceb824e25b06aa",
+        "android_client_info": {
+          "package_name": "com.nairobi.tugasakhir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30355090591-l25e6sorp74fo32prrgsaskhkhe5v7gr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-5jZjXyEklggAtqa-_Tr4cescw83d9cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30355090591-l25e6sorp74fo32prrgsaskhkhe5v7gr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
