@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".superadmin.keladmin.listDataAdmin">
+    tools:context=".admin.karyawan.listKaryawan">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_backdasboard_tambahadmin"
+            android:id="@+id/btn_backdasboard_karyawan"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/bg"
@@ -34,7 +34,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="50dp"
             android:gravity="center_horizontal|center_vertical"
-            android:text="ADMIN"
+            android:text="KARYAWAN"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -42,7 +42,7 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_tambahadmin"
+        android:id="@+id/btn_tambahkaryawan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
@@ -54,27 +54,46 @@
         app:srcCompat="@drawable/ic_baseline_add_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <SearchView
+        android:id="@+id/searchView_karyawan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bacground_white_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <ListView
-        android:id="@+id/lsadmin"
+        android:id="@+id/lskaryawan"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_tambahadmin"
+        app:layout_constraintBottom_toTopOf="@+id/btn_tambahkaryawan"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchadmin" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-    <SearchView
-        android:id="@+id/searchadmin"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/bacground_white_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:layout_marginTop="8dp"
+        android:text="Jumlah karyawan : "
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/searchView_karyawan"
+        app:layout_constraintTop_toBottomOf="@+id/searchView_karyawan" />
+
+    <TextView
+        android:id="@+id/jmlah_karyawan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toTopOf="@+id/textView13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

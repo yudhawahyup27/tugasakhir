@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingTop="15dp"
     android:background="#eee">
-<!--Baris 1-->
+<!--Baris Satu-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,95 +18,99 @@
         >
 
     <!-- Menu 1-->
-  <androidx.cardview.widget.CardView
-        android:layout_width="150dp"
-        android:layout_height="190dp"
-        android:layout_margin="10dp"
-        android:clickable="true"
-        app:cardCornerRadius="20dp"
-        android:foreground="?attr/selectableItemBackground">
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="150dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:id="@+id/btnkelolaabsensi"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:id="@+id/btnkelolakantor"
-            >
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/lingkaranred"
+                    android:padding="10dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/camera"
-                    />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:text="Absensi"
-                />
-            <View
-                android:layout_width="100dp"
-                android:layout_height="1dp"
-                android:background="@drawable/lingkaranred"
-                android:layout_marginTop="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:text="Absensi"/>
-        </LinearLayout>
-         </androidx.cardview.widget.CardView>
-        <!-- Menu 1-->
-  <androidx.cardview.widget.CardView
-        android:layout_width="150dp"
-        android:layout_height="190dp"
-        android:layout_margin="10dp"
-        android:clickable="true"
-       app:cardCornerRadius="20dp"
-        android:foreground="?attr/selectableItemBackground">
-        <LinearLayout
+                    android:text="Absensi"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/lingkaranred" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Absensi"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/kelolaprofil"
+            android:layout_width="150dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:id="@+id/btnkelolakaryawan"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:id="@+id/btnkelolakaryawan"
-            >
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:padding="10dp"
-                    android:background="@drawable/lingkarankuning"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/camera"
-                    />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:text="Kelola Profil"
-                />
-            <View
-                android:layout_width="100dp"
-                android:layout_height="1dp"
-                android:background="@drawable/lingkarankuning"
-                android:layout_marginTop="5dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:text="Kelola Profil"/>
-        </LinearLayout>
-         </androidx.cardview.widget.CardView>
+                    android:background="@drawable/lingkarankuning"
+                    android:padding="10dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Kelola Profil"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/lingkarankuning" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Kelola Profil"
+                    android:textColor="@android:color/darker_gray" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
@@ -119,7 +123,6 @@
         android:clipToPadding="false"
         >
 
-    <!-- Menu 1-->
   <androidx.cardview.widget.CardView
         android:layout_width="150dp"
         android:layout_height="190dp"
@@ -163,8 +166,7 @@
                 android:text="History Absensi"/>
         </LinearLayout>
          </androidx.cardview.widget.CardView>
-        <!-- Menu 1-->
-     <!-- Menu 1-->
+
   <androidx.cardview.widget.CardView
         android:layout_width="150dp"
         android:layout_height="190dp"
@@ -210,7 +212,7 @@
          </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-<!--Baris 1-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -227,13 +229,14 @@
         android:layout_margin="10dp"
         app:cardCornerRadius="20dp"
         android:clickable="true"
+      android:id="@+id/btn_logout"
         android:foreground="?attr/selectableItemBackground">
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:id="@+id/btn_logout"
+
                 android:orientation="vertical"
             >
                 <ImageView

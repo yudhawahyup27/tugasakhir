@@ -1,6 +1,7 @@
 package com.nairobi.tugasakhir.auth
 
 import android.content.Intent
+import android.net.Uri
 import cn.pedant.SweetAlert.SweetAlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,8 +25,6 @@ class LoginPage : AppCompatActivity(), View.OnClickListener {
     val F_PASSWORD = "password"
     val F_NAMA = "nama"
     val F_ROLE = "role"
-    val spuser= "karyawan"
-    val sppass =  "karyawan"
 
     var a = ""
     var b = ""
@@ -36,9 +35,8 @@ class LoginPage : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page_admin)
-
         btn_logins.setOnClickListener(this)
-
+        fab1.setOnClickListener(this)
 
     }
 
@@ -49,6 +47,11 @@ class LoginPage : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
+            R.id.fab1 ->  {
+                var url = "https://api.whatsapp.com/send?phone=6289612197184&text=Hallo%20Admin,%20Saya%20ingin%20buat%20akun%20"
+                var intentWebsite = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(intentWebsite)
+            }
             R.id.btn_logins -> {
 
                 val username = txin_username.text.toString()
@@ -68,21 +71,6 @@ class LoginPage : AppCompatActivity(), View.OnClickListener {
                             .setTitleText("Masukkan Username dan Password terlebih dahulu")
                             .show()
 //                        Toast.makeText(this, "Masukkan Username dan Password terlebih dahulu", Toast.LENGTH_SHORT).show()
-                    }
-                    else if (username == spuser && password == sppass ) {
-                        SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Login Berhasil")
-
-                                .setConfirmButton("Masuk", SweetAlertDialog.OnSweetClickListener {
-                                    Intent(this, Dashboardkaryawan::class.java).also {
-                                        it.putExtra("karyawan", a)
-                                        it.flags =
-                                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                        startActivity(it)
-                                        finish()
-                                    }
-                                })
-                                .show()
                     }
                     else if (username == a && password == b) {
                         if (d == "admin") {
@@ -111,8 +99,6 @@ class LoginPage : AppCompatActivity(), View.OnClickListener {
                                     }
                                 })
                                 .show()
-
-
                         }
                     } else {
                             SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)

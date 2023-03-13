@@ -5,28 +5,53 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.nairobi.tugasakhir.R
+import com.nairobi.tugasakhir.admin.karyawan.listKaryawan
+import com.nairobi.tugasakhir.auth.LoginPage
 import com.nairobi.tugasakhir.superadmin.keladmin.listDataAdmin
-import com.nairobi.tugasakhir.superadmin.keladmin.sp_tambahAdmin
+import kotlinx.android.synthetic.main.activity_dashboardkaryawan.*
 import kotlinx.android.synthetic.main.activity_login_page_admin.*
 
 class Dashboardkaryawan : AppCompatActivity() , View.OnClickListener{
+    lateinit var db : CollectionReference
+    var nikUser = ""
+    val COLLECTION = "User"
+    var F_USERNAME = "username"
+    val F_PASSWORD = "password"
+    val F_NAMA = "nama"
+    val F_ROLE = "role"
+
+    lateinit var db2 : FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboardkaryawan)
-    }
+        btn_logout.setOnClickListener(this)
+        kelolaprofil.setOnClickListener(this)
 
+        var paket: Bundle? = intent.extras
+        nikUser = (paket?.getString("nikUser")!!)
+    }
+    override fun onStart() {
+        super.onStart()
+        db = FirebaseFirestore.getInstance().collection(COLLECTION)
+        db2 = FirebaseFirestore.getInstance()
+        if (nikUser != null){
+           F_USERNAME = nikUser
+        }
+    }
       override fun onClick(p0: View?) {
         when(p0?.id) {
-            R.id.btnkelolakantor -> {
-                Intent(this, listDataAdmin::class.java).also {
-
+            R.id.kelolaprofil-> {
+                Intent(this, kelolaProfil::class.java).also {
+                    it.putExtra("nikUser", nikUser)
                     startActivity(it)
                     finish()
                 }
             }
             R.id.btnkelolakaryawan -> {
-                Intent(this, sp_tambahAdmin::class.java).also {
+                Intent(this, listKaryawan::class.java).also {
 
                 }
             }
@@ -42,7 +67,7 @@ class Dashboardkaryawan : AppCompatActivity() , View.OnClickListener{
                 SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Apakah anda yakin keluar aplikasi?")
                     .setConfirmButton("Ya", SweetAlertDialog.OnSweetClickListener {
-                        val intent = Intent(this, login::class.java)
+                        val intent = Intent(this, LoginPage::class.java)
                         startActivity(intent)
                         finish()
                     })
@@ -53,4 +78,5 @@ class Dashboardkaryawan : AppCompatActivity() , View.OnClickListener{
             }
         }
     }
+
 }

@@ -19,6 +19,16 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string-array name="daftar_div">
+        <item>Daftar Devisi</item>
+        <item>Manager </item>
+        <item>Purchasing</item>
+        <item>Marketing</item>
+        <item>Warehouse</item>
+        <item>Admin</item>
+        <item>Finance  </item>
+    </string-array>
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

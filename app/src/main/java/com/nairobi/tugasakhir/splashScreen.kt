@@ -10,6 +10,8 @@ import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.TextView
+import com.nairobi.tugasakhir.admin.dashboardAdmin
+import com.nairobi.tugasakhir.auth.LoginPage
 import kotlinx.android.synthetic.main.activity_login_page_admin.*
 
 class splashScreen : AppCompatActivity() {
@@ -46,7 +48,7 @@ class splashScreen : AppCompatActivity() {
 
     private fun setTransition() {
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, login::class.java)
+            val intent = Intent(this, LoginPage::class.java)
             startActivity(intent)
             finish()
         }, 3000L) //delay 3 second

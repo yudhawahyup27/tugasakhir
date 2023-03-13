@@ -16,16 +16,16 @@ class dashboardsuperadmin : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboardsuperadmin)
-
-           btnkelolakantor.setOnClickListener(this)
-       btnkelolakaryawan.setOnClickListener(this)
-        btnkelolaadmin.setOnClickListener(this)
-        btn_logout.setOnClickListener(this)
+//
+//           btnkelolaabsensi.setOnClickListener(this)
+//       btnkelolakaryawan.setOnClickListener(this)
+//        btnkelolaadmin.setOnClickListener(this)
+//        btn_logout.setOnClickListener(this)
 
     }
     override fun onClick(p0: View?) {
         when(p0?.id) {
-            R.id.btnkelolakantor -> {
+            R.id.btnkelolaabsensi -> {
                 Intent(this, listDataAdmin::class.java).also {
 
                     startActivity(it)
