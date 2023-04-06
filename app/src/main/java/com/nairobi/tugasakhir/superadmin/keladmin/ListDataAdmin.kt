@@ -46,8 +46,7 @@ class listDataAdmin : AppCompatActivity(), View.OnClickListener {
         btn_tambahadmin.setOnClickListener(this)
         btn_backdasboard_tambahadmin.setOnClickListener(this)
 
-//        var paket: Bundle? = intent.extras
-//        emailAdmin = (paket?.getString("emailAdmin")!!)
+
 
         search()
     }

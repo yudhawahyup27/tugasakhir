@@ -8,11 +8,10 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.nairobi.tugasakhir.R
-import com.nairobi.tugasakhir.admin.karyawan.listKaryawan
 import com.nairobi.tugasakhir.auth.LoginPage
-import com.nairobi.tugasakhir.superadmin.keladmin.listDataAdmin
+import com.nairobi.tugasakhir.karyawan.kelabsen.Absen
+import com.nairobi.tugasakhir.karyawan.kelcuti.tbCuti
 import kotlinx.android.synthetic.main.activity_dashboardkaryawan.*
-import kotlinx.android.synthetic.main.activity_login_page_admin.*
 
 class Dashboardkaryawan : AppCompatActivity() , View.OnClickListener{
     lateinit var db : CollectionReference
@@ -23,15 +22,19 @@ class Dashboardkaryawan : AppCompatActivity() , View.OnClickListener{
     val F_NAMA = "nama"
     val F_ROLE = "role"
 
+    var datanik =""
+
     lateinit var db2 : FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboardkaryawan)
         btn_logout.setOnClickListener(this)
         kelolaprofil.setOnClickListener(this)
+        btnCuti.setOnClickListener(this)
+        btnkelolaabsensi.setOnClickListener(this)
 
-        var paket: Bundle? = intent.extras
-        nikUser = (paket?.getString("nikUser")!!)
+        var code: Bundle? = intent.extras
+        nikUser = (code?.getString("nikUser")!!)
     }
     override fun onStart() {
         super.onStart()
@@ -44,20 +47,22 @@ class Dashboardkaryawan : AppCompatActivity() , View.OnClickListener{
       override fun onClick(p0: View?) {
         when(p0?.id) {
             R.id.kelolaprofil-> {
-                Intent(this, kelolaProfil::class.java).also {
+                Intent(this,kelolaProfil::class.java).also {
                     it.putExtra("nikUser", nikUser)
                     startActivity(it)
                     finish()
                 }
             }
-            R.id.btnkelolakaryawan -> {
-                Intent(this, listKaryawan::class.java).also {
-
+            R.id.btnCuti -> {
+                Intent(this, tbCuti::class.java).also {
+                    it.putExtra("nikUser", nikUser)
+                    startActivity(it)
+                    finish()
                 }
             }
-  R.id.btnkelolaadmin -> {
-                Intent(this, listDataAdmin::class.java).also {
-
+  R.id.btnkelolaabsensi -> {
+                Intent(this, Absen::class.java).also {
+                    it.putExtra("nikUser", nikUser)
                     startActivity(it)
                     finish()
                 }

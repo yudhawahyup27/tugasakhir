@@ -31,6 +31,7 @@ class listKaryawan : AppCompatActivity(), View.OnClickListener {
     val F_ALAMATKARTAWAN = "Alamar_kar"
     val F_JENISKELAMINKARYAWAN = "jenis_kelamin"
 
+
     var emailAdmin = ""
     var docId = ""
 
@@ -87,7 +88,7 @@ class listKaryawan : AppCompatActivity(), View.OnClickListener {
         docId  = hm.get(F_NIK).toString()
         Intent(this, ad_tambahKaryawan::class.java).also {
             it.putExtra("code", "1")
-            it.putExtra("nik", docId)
+            it.putExtra("id", docId)
             it.putExtra("emailAdmin", emailAdmin)
             it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(it)
@@ -95,7 +96,7 @@ class listKaryawan : AppCompatActivity(), View.OnClickListener {
         }
     }
     fun showDataKaryawan(){
-        db.collection(COLLECTION).orderBy("nama", Query.Direction.ASCENDING).get().addOnSuccessListener { result ->
+        db.collection(COLLECTION).orderBy("nik", Query.Direction.ASCENDING).get().addOnSuccessListener { result ->
             alKayawan.clear()
             for(doc: QueryDocumentSnapshot in result) {
                 val hm = HashMap<String,Any>()
@@ -120,7 +121,6 @@ class listKaryawan : AppCompatActivity(), View.OnClickListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
                     searchId = p0
-
                     db1 = FirebaseFirestore.getInstance().collection(COLLECTION)
                     db1.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                         if (firebaseFirestoreException != null) {
@@ -156,7 +156,7 @@ class listKaryawan : AppCompatActivity(), View.OnClickListener {
                 hm.set(F_ALAMATKARTAWAN, doc.get(F_ALAMATKARTAWAN).toString())
                 alKayawan.add(hm)
             }
-            adapterKaryawan = SimpleAdapter(this, alKayawan, R.layout.activity_list_karyawan,
+            adapterKaryawan = SimpleAdapter(this, alKayawan, R.layout.listkaryawan,
                 arrayOf(F_NIK, F_NAMAKARYAWAN, F_TGLLAHIRKARYAWAN, F_ALAMATKARTAWAN),
                 intArrayOf(R.id.ls_nik, R.id.ls_namakaryawan, R.id.ls_tgllahirkaryawan, R.id.ls_AlamatKaryawan))
             lskaryawan.adapter = adapterKaryawan

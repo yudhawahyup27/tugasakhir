@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.nairobi.tugasakhir.R
+import com.nairobi.tugasakhir.admin.Kelocuti.listAllCuti
 import com.nairobi.tugasakhir.admin.karyawan.ad_tambahKaryawan
 import com.nairobi.tugasakhir.admin.karyawan.listKaryawan
 import com.nairobi.tugasakhir.auth.LoginPage
@@ -17,7 +18,7 @@ class dashboardAdmin : AppCompatActivity(), View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard_admin)
-
+        btnkelolacuti.setOnClickListener(this)
        btnkelolakaryawan.setOnClickListener(this)
         btnkelolaadmin.setOnClickListener(this)
         btn_logout.setOnClickListener(this)
@@ -33,6 +34,13 @@ class dashboardAdmin : AppCompatActivity(), View.OnClickListener{
               }
               R.id.btnkelolakaryawan -> {
                   Intent(this, listKaryawan::class.java).also {
+
+                      startActivity(it)
+                      finish()
+                  }
+              }
+              R.id.btnkelolacuti -> {
+                  Intent(this, listAllCuti::class.java).also {
 
                       startActivity(it)
                       finish()

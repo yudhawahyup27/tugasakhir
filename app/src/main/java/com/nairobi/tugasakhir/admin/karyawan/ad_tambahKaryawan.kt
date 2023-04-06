@@ -16,6 +16,7 @@ import com.nairobi.tugasakhir.R
 import kotlinx.android.synthetic.main.activity_ad_tambah_karyawan.*
 import java.util.*
 
+
 class ad_tambahKaryawan : AppCompatActivity(), View.OnClickListener {
 
 
@@ -49,11 +50,11 @@ class ad_tambahKaryawan : AppCompatActivity(), View.OnClickListener {
     var code = ""
     var docId = ""
     var emailAdmin = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ad_tambah_karyawan)
-        var paket: Bundle? = intent.extras
-        code = (paket?.getString("code")!!)
         val cal: Calendar = Calendar.getInstance()
         tahun = cal.get(Calendar.YEAR)
         bulan = cal.get(Calendar.MONTH)
@@ -63,6 +64,8 @@ class ad_tambahKaryawan : AppCompatActivity(), View.OnClickListener {
         btn_save_karyawan.setOnClickListener(this)
         btn_delete_karyawan.setOnClickListener(this)
 
+        var paket: Bundle? = intent.extras
+        code = (paket?.getString("code")!!)
         radioGroup()
         viewCondition()
     }
@@ -113,7 +116,7 @@ class ad_tambahKaryawan : AppCompatActivity(), View.OnClickListener {
         else if (code == "1") {
             var paket: Bundle? = intent.extras
             emailAdmin = (paket?.getString("emailAdmin")!!)
-            docId = (paket?.getString("nik")!!)
+            docId = (paket?.getString("id")!!)
             btn_delete_karyawan.visibility = View.VISIBLE
             txin_nik.isEnabled = false
         }
@@ -141,7 +144,23 @@ class ad_tambahKaryawan : AppCompatActivity(), View.OnClickListener {
                     SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Lengkapi data terlebih dahulu!")
                         .show()
-                } else {
+                }
+                else if (nik == nik) {
+                    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Maaf, NIK Karyawan sudah terdaftar mohon dicek kembali!")
+                        .show()
+                }
+                else if (nik.length != 16) {
+                    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Maaf, NIK Karyawan Minimal 16 DIGIT!")
+                        .show()
+                }
+                else if (tlp.length != 12 && tlp.length != 13 ) {
+                    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Maaf, Nomer Telepon Karyawan Minimal 12 atau 13 DIGIT!")
+                        .show()
+                }
+                else {
                     val hm = HashMap<String, Any>()
                     hm.set(F_NIK, txin_nik.text.toString())
                     hm.set(F_NAMAKARYAWAN, txin_nama.text.toString())
@@ -257,4 +276,3 @@ class ad_tambahKaryawan : AppCompatActivity(), View.OnClickListener {
         }
     }
 }
-

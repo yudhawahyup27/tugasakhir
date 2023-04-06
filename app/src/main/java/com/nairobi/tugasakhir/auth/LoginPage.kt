@@ -1,12 +1,15 @@
 package com.nairobi.tugasakhir.auth
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import cn.pedant.SweetAlert.SweetAlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.Window
+import androidx.core.app.ActivityCompat
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.nairobi.tugasakhir.R
@@ -30,6 +33,7 @@ class LoginPage : AppCompatActivity(), View.OnClickListener {
     var b = ""
     var c = ""
     var d = ""
+    var REQ_PERMISSION = 101
 
     lateinit var db: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +41,37 @@ class LoginPage : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_login_page_admin)
         btn_logins.setOnClickListener(this)
         fab1.setOnClickListener(this)
-
+        setPermission()
     }
 
+    private fun setPermission() {
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQ_PERMISSION
+            )
+        }
+    }
     override fun onStart() {
         super.onStart()
         db = FirebaseFirestore.getInstance()
     }
-
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        for (grantResult in grantResults) {
+            if (grantResult == PackageManager.PERMISSION_GRANTED) {
+                val intent = intent
+                finish()
+                startActivity(intent)
+            }
+        }
+    }
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.fab1 ->  {

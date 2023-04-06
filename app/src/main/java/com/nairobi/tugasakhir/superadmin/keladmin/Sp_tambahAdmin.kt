@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.nairobi.tugasakhir.R
 import kotlinx.android.synthetic.main.activity_sp_tambah_admin.*
+import kotlinx.android.synthetic.main.activity_tb_cuti.*
 
 class sp_tambahAdmin : AppCompatActivity() , View.OnClickListener{
 
@@ -40,14 +41,14 @@ class sp_tambahAdmin : AppCompatActivity() , View.OnClickListener{
     var emailAdmin = ""
     var code = ""
     var docId = ""
-
+ var role = F_ROLE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sp_tambah_admin)
 
         btn_backdasboard_tambahadmin.setOnClickListener(this)
-        btn_save_admin.setOnClickListener(this)
+        btn_saveadmin.setOnClickListener(this)
         btn_delete_Admin.setOnClickListener(this)
 
         var paket: Bundle? = intent.extras
@@ -86,7 +87,7 @@ class sp_tambahAdmin : AppCompatActivity() , View.OnClickListener{
                     finish()
                 }
             }
-            R.id.btn_save_admin -> {
+            R.id.btn_saveadmin -> {
 
                 nama = txin_namaAdmin.text.toString()
                 email = txin_emailAdmin.text.toString()
@@ -98,7 +99,19 @@ class sp_tambahAdmin : AppCompatActivity() , View.OnClickListener{
                     SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Lengkapi data terlebih dahulu!")
                         .show()
-                } else {
+
+                }
+                else if (email == F_EMAILADMIN) {
+                    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Maaf, Email Sudah Terdaftar Mohon Dicek Kembali!")
+                        .show()
+                }
+                else if (telp.length != 12 && telp.length != 13 ) {
+                    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Maaf, Nomer Telepon Karyawan Minimal 12 atau 13 DIGIT!")
+                        .show()
+                }
+                else {
                     val hm = HashMap<String, Any>()
                     hm.set(F_NAMAADMIN, txin_namaAdmin.text.toString())
                     hm.set(F_EMAILADMIN, txin_emailAdmin.text.toString())
@@ -167,7 +180,7 @@ class sp_tambahAdmin : AppCompatActivity() , View.OnClickListener{
 
     fun detailadmin() {
 
-        title_admin.setText("DETAIL Admin")
+        title_admin.setText("DETAIL ADMIN")
 
         val showDetail = db1.whereEqualTo("email_admin", docId)
         showDetail.get().addOnSuccessListener { result ->
@@ -197,7 +210,7 @@ class sp_tambahAdmin : AppCompatActivity() , View.OnClickListener{
             var paket: Bundle? = intent.extras
             emailAdmin = (paket?.getString("email_admin")!!)
             docId = (paket?.getString("id")!!)
-            btn_delete_Admin.visibility = View.VISIBLE
+                btn_delete_Admin.visibility = View.VISIBLE
             txin_emailAdmin.isEnabled = false
         }
     }
